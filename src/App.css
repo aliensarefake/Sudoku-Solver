@@ -52,7 +52,41 @@
 img.refreshButton{
     height: 40px;
     width: 40px;
-    position: relative;
-    left: 40px;
+}
+
+
+span.iconButton{
     cursor: pointer;
+    position: relative;
+    left: 55px;
+    transition: transform 0.2s ease-in-out; /* Speed up transition for a more responsive feel */
+}
+
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes press {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0.75);
+    }
+  }
+  
+  span.iconButton:active {
+    transform: scale(0.85); /* Shrink */
+    transition: transform 0.1s ease-in; /* Quicker transition while pressing */
+}
+
+span.iconButton:not(:active) {
+    transform: scale(1); /* Reset to original size */
+    transition: transform 0.2s ease-out; /* Slower transition while releasing */
 }

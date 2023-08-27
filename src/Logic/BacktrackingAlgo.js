@@ -20,7 +20,7 @@ function isValid(board, row, col, num) {
     return true;
   }
   
-  function solveSudoku(board) {
+  export function solveSudoku(board) {
     for (let row = 0; row < 9; row++) {
       for (let col = 0; col < 9; col++) {
         if (board[row][col] === 0) {
