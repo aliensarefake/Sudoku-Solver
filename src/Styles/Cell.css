@@ -1,0 +1,26 @@
+.cell {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background-color: white;
+  }
+  
+  .cell.empty {
+    background-color: #f2f2f2;
+  }
+  
+  .row .cell:nth-child(3n),
+  .row .cell:nth-child(6n),
+  .row .cell:nth-child(9n) {
+    border-right: 3px solid black;
+  }
+  
+  .row .cell:nth-child(9n) {
+    border-right: none;
+  }
+  
