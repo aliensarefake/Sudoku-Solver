@@ -1,11 +1,28 @@
-.board {
+  .board {
     display: flex;
     flex-wrap: wrap;
     width: 540px;
     border: 3px solid black;
     margin: 30px auto;
+    transition: border-color 0.5s ease-in-out;
+  }
+
+  .board-red {
+    border-color: #D32F2F; 
+    transition: border-color 0s ease-in-out;
   }
   
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+  }
+  
+  .board-shake {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+  }
+
   .row {
     display: flex;
     width: 100%;

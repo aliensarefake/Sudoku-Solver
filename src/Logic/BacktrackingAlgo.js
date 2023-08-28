@@ -20,17 +20,26 @@ function isValid(board, row, col, num) {
     return true;
   }
   
-  export function solveSudoku(board) {
+  export async function solveSudoku(board, setBoard) {
     for (let row = 0; row < 9; row++) {
       for (let col = 0; col < 9; col++) {
         if (board[row][col] === 0) {
           for (let num = 1; num <= 9; num++) {
             if (isValid(board, row, col, num)) {
-              board[row][col] = num;
-              if (solveSudoku(board)) {
+              // Create a new copy of the board
+              const newBoard = JSON.parse(JSON.stringify(board));
+              newBoard[row][col] = num;
+  
+              setBoard(newBoard);
+              await new Promise(resolve => setTimeout(resolve, 50)); // Delay for visualization
+  
+              if (await solveSudoku(newBoard, setBoard)) {
                 return true;
               }
-              board[row][col] = 0; // backtrack
+  
+              newBoard[row][col] = 0; // backtrack
+              setBoard(newBoard);
+              await new Promise(resolve => setTimeout(resolve, 50)); // Delay for visualization
             }
           }
           return false;
@@ -39,4 +48,3 @@ function isValid(board, row, col, num) {
     }
     return true; // Sudoku solved
   }
-  
